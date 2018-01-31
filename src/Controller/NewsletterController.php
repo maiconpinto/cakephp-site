@@ -11,7 +11,11 @@ class NewsletterController extends AppController
         $data = $this->request->getData();
 
         // IMPLEMENT CODE HERE
+        if (!$this->request->is('ajax')) {
+            $this->redirect($this->referer());
+        }
 
-        $this->redirect($this->referer());
+        $this->viewBuilder()->setLayout('json');
+        $this->set(compact('data'));
     }
 }
