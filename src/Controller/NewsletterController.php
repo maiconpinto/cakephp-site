@@ -22,12 +22,12 @@ class NewsletterController extends AppController
             ->template('Site.newsletter', 'Site.zurb')
             ->emailFormat('html')
             ->to('contato@maiconpinto.com.br')
-            ->subject(__('New e-mail for newsletter.'))
+            ->subject(__('New e-mail from newsletter'))
             ->from($data['email'])
             ->viewVars([
-                'title' => __('title'),
-                'description' => __('description'),
-                'image' => '"http://placehold.it/500x200'
+                'image' => 'http://placehold.it/500x200',
+                'title' => __('New e-mail from newsletter'),
+                'email' => $data['email'],
             ])
             ->send();
 

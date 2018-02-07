@@ -23,8 +23,16 @@
                 <table>
                     <tr>
                     <th>
-                        <h1 class="text-center"><?php echo $title ?></h1>
-                        <center data-parsed=""> <img src="<?php echo $image ?>" align="center" class="float-center"> </center>
+                        <?php
+                        if (!empty($image)) {
+                            ?>
+                            <center data-parsed=""> 
+                                <img src="<?php echo $image ?>" align="center" class="float-center"> 
+                            </center>
+                            <?php
+                        }
+                        ?>
+                        <h1 class="text-center"><?php echo isset($title) ? $title : __('New e-mail from newsletter') ?></h1>
                         <table class="spacer">
                         <tbody>
                             <tr>
@@ -32,28 +40,10 @@
                             </tr>
                         </tbody>
                         </table>
-                        <p class="lead"><?php echo $description ?></p>
-                        <table class="row">
-                        <tbody>
-                            <tr>
-                            <th class="small-12 large-12 columns">
-                                <table>
-                                <tr>
-                                    <th>
-                                    <h4><?php echo __('Get Involved'); ?>:</h4>
-                                    <ul>
-                                        <li><a href="<?php echo !empty($link_facebook) ? $link_facebook : '#';  ?>">Facebook</a></li>
-                                        <li><a href="<?php echo !empty($link_twitter) ? $link_twitter : '#'; ?>">Twitter</a></li>
-                                        <li><a href="<?php echo !empty($link_instagram) ? $link_instagram : '#'; ?>">Instagram</a></li>
-                                    </ul>
-                                    </th>
-                                </tr>
-                                </table>
-                            </th>
-                            </tr>
-                        </tbody>
-                        </table>
-                        <p><small><?php echo __("You received this email because you're signed up to get updates from us."); ?> <?php echo $this->Html->link(__('Click here to unsubscribe.'), '/'); ?></small></p>
+
+                        <p class="lead"><?php echo $email; ?></p>
+                        
+                        <p><small><?php echo __("You received this email because you're receive new signup for newsletter"); ?></small></p>
                     </th>
                     </tr>
                 </table>
