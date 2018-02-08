@@ -22,29 +22,22 @@
                 <th class="small-12 large-12 columns first last">
                 <table>
                     <tr>
-                    <th>
-                        <?php
-                        if (!empty($image)) {
-                            ?>
-                            <center data-parsed=""> 
-                                <img src="<?php echo $image ?>" align="center" class="float-center"> 
-                            </center>
+                        <th>
                             <?php
-                        }
-                        ?>
-                        <h1 class="text-center"><?php echo isset($title) ? $title : __('New e-mail from newsletter') ?></h1>
-                        <table class="spacer">
-                        <tbody>
-                            <tr>
-                            <td height="16px" style="font-size:16px;line-height:16px;">&#xA0;</td>
-                            </tr>
-                        </tbody>
-                        </table>
-
-                        <p class="lead"><?php echo $email; ?></p>
-                        
-                        <p><small><?php echo __("You received this email because you're receive new signup for newsletter"); ?></small></p>
-                    </th>
+                            if (!empty($image)) {
+                                ?>
+                                <center data-parsed=""> 
+                                    <img src="<?php echo $image ?>" align="center" class="float-center"> 
+                                </center>
+                                <?php
+                            }
+                            ?>
+                            <h1 class="text-center"><?php echo isset($title) ? $title : __('New email from newsletter') ?></h1>
+                            
+                            <p class="lead"><?php echo $email; ?></p>
+                            
+                            <p><small><?php echo __("You are receiving this email because a new newsletter subscription has been registered"); ?></small></p>
+                        </th>
                     </tr>
                 </table>
                 </th>
