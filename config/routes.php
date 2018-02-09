@@ -5,7 +5,7 @@ use Cake\Routing\Route\DashedRoute;
 
 Router::plugin(
     'Site',
-    ['path' => '/site'],
+    ['path' => '/api'],
     function (RouteBuilder $routes) {
         $routes->fallbacks(DashedRoute::class);
     }

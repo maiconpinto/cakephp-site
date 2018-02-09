@@ -13,12 +13,12 @@ class NewsletterController extends AppController
 
         // IMPLEMENT CODE HERE
         if (!$this->request->is('ajax')) {
-            $this->redirect($this->referer());
+            return $this->redirect($this->referer());
         }
 
         $email = new Email();
         $email
-            ->profile('gmail')
+            //->profile('gmail')
             ->template('Site.newsletter', 'Site.zurb')
             ->emailFormat('html')
             ->to('contato@maiconpinto.com.br')
