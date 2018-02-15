@@ -13,11 +13,6 @@ class CreateBanners extends AbstractMigration
     public function change()
     {
         $table = $this->table('banners');
-        $table->addColumn('id', 'integer', [
-            'default' => null,
-            'limit' => 11,
-            'null' => false,
-        ]);
         $table->addColumn('created', 'datetime', [
             'default' => null,
             'null' => false,
