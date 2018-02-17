@@ -37,6 +37,11 @@ class BannersTable extends Table
         $this->setPrimaryKey('id');
 
         $this->addBehavior('Timestamp');
+
+        $this->addBehavior('Josegonzalez/Upload.Upload', [
+            'image' => [],
+            'background' => []
+        ]);
     }
 
     /**
@@ -60,42 +65,31 @@ class BannersTable extends Table
         $validator
             ->scalar('subtitle')
             ->maxLength('subtitle', 255)
-            ->requirePresence('subtitle', 'create')
-            ->notEmpty('subtitle');
+            ->allowEmpty('subtitle');
 
         $validator
             ->scalar('description')
-            ->requirePresence('description', 'create')
-            ->notEmpty('description');
+            ->allowEmpty('description');
 
         $validator
-            ->scalar('image')
-            ->maxLength('image', 255)
-            ->requirePresence('image', 'create')
-            ->notEmpty('image');
+            ->allowEmpty('image');
 
         $validator
             ->scalar('path_image')
             ->maxLength('path_image', 255)
-            ->requirePresence('path_image', 'create')
-            ->notEmpty('path_image');
+            ->allowEmpty('path_image');
 
         $validator
-            ->scalar('background')
-            ->maxLength('background', 255)
-            ->requirePresence('background', 'create')
-            ->notEmpty('background');
+            ->allowEmpty('background');
 
         $validator
             ->scalar('path_background')
             ->maxLength('path_background', 255)
-            ->requirePresence('path_background', 'create')
-            ->notEmpty('path_background');
+            ->allowEmpty('path_background');
 
         $validator
             ->integer('order')
-            ->requirePresence('order', 'create')
-            ->notEmpty('order');
+            ->allowEmpty('order');
 
         $validator
             ->integer('status')

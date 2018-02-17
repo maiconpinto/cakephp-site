@@ -12,9 +12,9 @@ use Cake\ORM\Entity;
  * @property string $title
  * @property string $subtitle
  * @property string $description
- * @property string $image
+ * @property $image
  * @property string $path_image
- * @property string $background
+ * @property $background
  * @property string $path_background
  * @property int $order
  * @property int $status

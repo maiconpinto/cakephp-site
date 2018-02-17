@@ -29,39 +29,39 @@ class CreateBanners extends AbstractMigration
         $table->addColumn('subtitle', 'string', [
             'default' => null,
             'limit' => 255,
-            'null' => false,
+            'null' => true,
         ]);
         $table->addColumn('description', 'text', [
             'default' => null,
-            'null' => false,
+            'null' => true,
         ]);
         $table->addColumn('image', 'string', [
-            'default' => null,
+            'default' => '',
             'limit' => 255,
-            'null' => false,
+            'null' => true,
         ]);
         $table->addColumn('path_image', 'string', [
-            'default' => null,
+            'default' => '',
             'limit' => 255,
-            'null' => false,
+            'null' => true,
         ]);
         $table->addColumn('background', 'string', [
-            'default' => null,
+            'default' => '',
             'limit' => 255,
-            'null' => false,
+            'null' => true,
         ]);
         $table->addColumn('path_background', 'string', [
-            'default' => null,
+            'default' => '',
             'limit' => 255,
-            'null' => false,
+            'null' => true,
         ]);
         $table->addColumn('order', 'integer', [
             'default' => null,
             'limit' => 11,
-            'null' => false,
+            'null' => true,
         ]);
         $table->addColumn('status', 'integer', [
-            'default' => null,
+            'default' => 1,
             'limit' => 11,
             'null' => false,
         ]);
