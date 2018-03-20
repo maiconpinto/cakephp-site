@@ -35,7 +35,7 @@ class CreatePortfolios extends AbstractMigration
             'limit' => 255,
             'null' => true,
         ]);
-        $table->addColumn('imagem', 'string', [
+        $table->addColumn('image', 'string', [
             'default' => null,
             'limit' => 255,
             'null' => false,
