@@ -1,6 +1,7 @@
 <?php
 namespace Site\Controller;
 
+use Cake\Event\Event;
 use Site\Controller\AppController;
 
 /**
@@ -12,6 +13,9 @@ use Site\Controller\AppController;
  */
 class TagsController extends AppController
 {
+    public function beforeRender(Event $event) {
+        $this->viewBuilder()->setTheme(false);
+    }
 
     /**
      * Index method
