@@ -33,8 +33,8 @@ class BlogCell extends Cell
     public function posts($element) {
         $this->set('element',$element);
 
-        $this->loadModel('Posts');
-        $posts = $this->Posts->find('all')->contain(['Tags', 'Comments'])->where(['status' => 1]);
+        $this->loadModel('Site.Posts');
+        $posts = $this->Posts->find('all')->contain(['Authors', 'Tags', 'Comments'])->where(['status' => 1]);
         $this->set('posts', $posts->all());
     }
 }
