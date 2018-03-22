@@ -34,7 +34,7 @@ class BlogCell extends Cell
         $this->set('element',$element);
 
         $this->loadModel('Posts');
-        $posts = $this->Posts->find('all', ['contain' => ['Tags', 'Comments']])->where(['status' => 1]);
+        $posts = $this->Posts->find('all')->contain(['Tags', 'Comments'])->where(['status' => 1]);
         $this->set('posts', $posts->all());
     }
 }
