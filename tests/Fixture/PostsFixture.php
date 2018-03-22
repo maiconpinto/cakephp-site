@@ -25,6 +25,7 @@ class PostsFixture extends TestFixture
         'date' => ['type' => 'date', 'length' => null, 'null' => false, 'default' => null, 'comment' => '', 'precision' => null],
         'image' => ['type' => 'string', 'length' => 255, 'null' => true, 'default' => null, 'collate' => 'latin1_swedish_ci', 'comment' => '', 'precision' => null, 'fixed' => null],
         'status' => ['type' => 'integer', 'length' => 11, 'unsigned' => false, 'null' => false, 'default' => '1', 'comment' => '', 'precision' => null, 'autoIncrement' => null],
+        'author_id' => ['type' => 'integer', 'length' => 11, 'unsigned' => false, 'null' => false, 'default' => null, 'comment' => '', 'precision' => null, 'autoIncrement' => null],
         '_constraints' => [
             'primary' => ['type' => 'primary', 'columns' => ['id'], 'length' => []],
         ],
@@ -43,13 +44,14 @@ class PostsFixture extends TestFixture
     public $records = [
         [
             'id' => 1,
-            'created' => '2018-03-22 03:07:13',
-            'modified' => '2018-03-22 03:07:13',
+            'created' => '2018-03-22 04:56:17',
+            'modified' => '2018-03-22 04:56:17',
             'title' => 'Lorem ipsum dolor sit amet',
             'post' => 'Lorem ipsum dolor sit amet, aliquet feugiat. Convallis morbi fringilla gravida, phasellus feugiat dapibus velit nunc, pulvinar eget sollicitudin venenatis cum nullam, vivamus ut a sed, mollitia lectus. Nulla vestibulum massa neque ut et, id hendrerit sit, feugiat in taciti enim proin nibh, tempor dignissim, rhoncus duis vestibulum nunc mattis convallis.',
             'date' => '2018-03-22',
             'image' => 'Lorem ipsum dolor sit amet',
-            'status' => 1
+            'status' => 1,
+            'author_id' => 1
         ],
     ];
 }

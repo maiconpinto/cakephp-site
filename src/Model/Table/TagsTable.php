@@ -9,6 +9,8 @@ use Cake\Validation\Validator;
 /**
  * Tags Model
  *
+ * @property |\Cake\ORM\Association\BelongsToMany $Posts
+ *
  * @method \Site\Model\Entity\Tag get($primaryKey, $options = [])
  * @method \Site\Model\Entity\Tag newEntity($data = null, array $options = [])
  * @method \Site\Model\Entity\Tag[] newEntities(array $data, array $options = [])
@@ -37,6 +39,13 @@ class TagsTable extends Table
         $this->setPrimaryKey('id');
 
         $this->addBehavior('Timestamp');
+
+        $this->belongsToMany('Posts', [
+            'foreignKey' => 'tag_id',
+            'targetForeignKey' => 'post_id',
+            'joinTable' => 'posts_tags',
+            'className' => 'Site.Posts'
+        ]);
     }
 
     /**

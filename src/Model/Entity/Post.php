@@ -14,6 +14,11 @@ use Cake\ORM\Entity;
  * @property \Cake\I18n\FrozenDate $date
  * @property string $image
  * @property int $status
+ * @property int $author_id
+ *
+ * @property \Site\Model\Entity\Author $author
+ * @property \Site\Model\Entity\Comment[] $comments
+ * @property \Site\Model\Entity\Tag[] $tags
  */
 class Post extends Entity
 {
@@ -34,6 +39,10 @@ class Post extends Entity
         'post' => true,
         'date' => true,
         'image' => true,
-        'status' => true
+        'status' => true,
+        'author_id' => true,
+        'author' => true,
+        'comments' => true,
+        'tags' => true
     ];
 }

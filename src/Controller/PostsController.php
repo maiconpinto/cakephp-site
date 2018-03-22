@@ -24,6 +24,9 @@ class PostsController extends AppController
      */
     public function index()
     {
+        $this->paginate = [
+            'contain' => ['Authors']
+        ];
         $posts = $this->paginate($this->Posts);
 
         $this->set(compact('posts'));
@@ -39,7 +42,7 @@ class PostsController extends AppController
     public function view($id = null)
     {
         $post = $this->Posts->get($id, [
-            'contain' => []
+            'contain' => ['Authors', 'Comments', 'Tags']
         ]);
 
         $this->set('post', $post);
@@ -62,7 +65,10 @@ class PostsController extends AppController
             }
             $this->Flash->error(__('The post could not be saved. Please, try again.'));
         }
-        $this->set(compact('post'));
+        $authors = $this->Posts->Authors->find('list', ['limit' => 200]);
+        $comments = $this->Posts->Comments->find('list', ['limit' => 200]);
+        $tags = $this->Posts->Tags->find('list', ['limit' => 200]);
+        $this->set(compact('post', 'authors', 'comments', 'tags'));
     }
 
     /**
@@ -75,7 +81,7 @@ class PostsController extends AppController
     public function edit($id = null)
     {
         $post = $this->Posts->get($id, [
-            'contain' => []
+            'contain' => ['Comments', 'Tags']
         ]);
         if ($this->request->is(['patch', 'post', 'put'])) {
             $post = $this->Posts->patchEntity($post, $this->request->getData());
@@ -86,7 +92,10 @@ class PostsController extends AppController
             }
             $this->Flash->error(__('The post could not be saved. Please, try again.'));
         }
-        $this->set(compact('post'));
+        $authors = $this->Posts->Authors->find('list', ['limit' => 200]);
+        $comments = $this->Posts->Comments->find('list', ['limit' => 200]);
+        $tags = $this->Posts->Tags->find('list', ['limit' => 200]);
+        $this->set(compact('post', 'authors', 'comments', 'tags'));
     }
 
     /**

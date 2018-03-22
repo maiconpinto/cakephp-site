@@ -14,6 +14,10 @@
             )
         ?></li>
         <li><?= $this->Html->link(__('List Posts'), ['action' => 'index']) ?></li>
+        <li><?= $this->Html->link(__('List Authors'), ['controller' => 'Authors', 'action' => 'index']) ?></li>
+        <li><?= $this->Html->link(__('New Author'), ['controller' => 'Authors', 'action' => 'add']) ?></li>
+        <li><?= $this->Html->link(__('List Tags'), ['controller' => 'Tags', 'action' => 'index']) ?></li>
+        <li><?= $this->Html->link(__('New Tag'), ['controller' => 'Tags', 'action' => 'add']) ?></li>
     </ul>
 </nav>
 <div class="posts form large-9 medium-8 columns content">
@@ -26,6 +30,8 @@
             echo $this->Form->control('date');
             echo $this->Form->control('image', ['type' => 'file']);
             echo $this->Form->control('status');
+            echo $this->Form->control('author_id', ['options' => $authors]);
+            echo $this->Form->control('tags._ids', ['options' => $tags]);
         ?>
     </fieldset>
     <?= $this->Form->button(__('Submit')) ?>

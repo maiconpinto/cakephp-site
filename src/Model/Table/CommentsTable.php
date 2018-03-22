@@ -9,6 +9,8 @@ use Cake\Validation\Validator;
 /**
  * Comments Model
  *
+ * @property |\Cake\ORM\Association\BelongsToMany $Posts
+ *
  * @method \Site\Model\Entity\Comment get($primaryKey, $options = [])
  * @method \Site\Model\Entity\Comment newEntity($data = null, array $options = [])
  * @method \Site\Model\Entity\Comment[] newEntities(array $data, array $options = [])
@@ -37,6 +39,13 @@ class CommentsTable extends Table
         $this->setPrimaryKey('id');
 
         $this->addBehavior('Timestamp');
+
+        $this->belongsToMany('Posts', [
+            'foreignKey' => 'comment_id',
+            'targetForeignKey' => 'post_id',
+            'joinTable' => 'comments_posts',
+            'className' => 'Site.Posts'
+        ]);
     }
 
     /**

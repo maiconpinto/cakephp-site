@@ -24,7 +24,12 @@ class PostsTableTest extends TestCase
      * @var array
      */
     public $fixtures = [
-        'plugin.site.posts'
+        'plugin.site.posts',
+        'plugin.site.authors',
+        'plugin.site.comments',
+        'plugin.site.comments_posts',
+        'plugin.site.tags',
+        'plugin.site.posts_tags'
     ];
 
     /**
@@ -67,6 +72,16 @@ class PostsTableTest extends TestCase
      * @return void
      */
     public function testValidationDefault()
+    {
+        $this->markTestIncomplete('Not implemented yet.');
+    }
+
+    /**
+     * Test buildRules method
+     *
+     * @return void
+     */
+    public function testBuildRules()
     {
         $this->markTestIncomplete('Not implemented yet.');
     }

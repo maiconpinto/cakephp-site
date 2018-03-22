@@ -39,8 +39,8 @@ class TagsFixture extends TestFixture
     public $records = [
         [
             'id' => 1,
-            'created' => '2018-03-22 02:32:09',
-            'modified' => '2018-03-22 02:32:09',
+            'created' => '2018-03-22 04:41:27',
+            'modified' => '2018-03-22 04:41:27',
             'title' => 'Lorem ipsum dolor sit amet'
         ],
     ];

@@ -9,6 +9,10 @@ use Cake\Validation\Validator;
 /**
  * Posts Model
  *
+ * @property \Site\Model\Table\AuthorsTable|\Cake\ORM\Association\BelongsTo $Authors
+ * @property \Site\Model\Table\CommentsTable|\Cake\ORM\Association\BelongsToMany $Comments
+ * @property \Site\Model\Table\TagsTable|\Cake\ORM\Association\BelongsToMany $Tags
+ *
  * @method \Site\Model\Entity\Post get($primaryKey, $options = [])
  * @method \Site\Model\Entity\Post newEntity($data = null, array $options = [])
  * @method \Site\Model\Entity\Post[] newEntities(array $data, array $options = [])
@@ -37,8 +41,27 @@ class PostsTable extends Table
         $this->setPrimaryKey('id');
 
         $this->addBehavior('Timestamp');
+
         $this->addBehavior('Josegonzalez/Upload.Upload', [
             'image' => []
+        ]);
+
+        $this->belongsTo('Authors', [
+            'foreignKey' => 'author_id',
+            'joinType' => 'INNER',
+            'className' => 'Site.Authors'
+        ]);
+        $this->belongsToMany('Comments', [
+            'foreignKey' => 'post_id',
+            'targetForeignKey' => 'comment_id',
+            'joinTable' => 'comments_posts',
+            'className' => 'Site.Comments'
+        ]);
+        $this->belongsToMany('Tags', [
+            'foreignKey' => 'post_id',
+            'targetForeignKey' => 'tag_id',
+            'joinTable' => 'posts_tags',
+            'className' => 'Site.Tags'
         ]);
     }
 
@@ -79,5 +102,19 @@ class PostsTable extends Table
             ->notEmpty('status');
 
         return $validator;
+    }
+
+    /**
+     * Returns a rules checker object that will be used for validating
+     * application integrity.
+     *
+     * @param \Cake\ORM\RulesChecker $rules The rules object to be modified.
+     * @return \Cake\ORM\RulesChecker
+     */
+    public function buildRules(RulesChecker $rules)
+    {
+        $rules->add($rules->existsIn(['author_id'], 'Authors'));
+
+        return $rules;
     }
 }
