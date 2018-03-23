@@ -52,6 +52,12 @@ class PostsTable extends Table
             'className' => 'Site.Authors'
         ]);
 
+        $this->belongsTo('Categories', [
+            'foreignKey' => 'category_id',
+            'joinType' => 'INNER',
+            'className' => 'Categories'
+        ]);
+
         $this->hasMany('Comments', [
             'foreignKey' => 'post_id',
             'className' => 'Site.Comments'

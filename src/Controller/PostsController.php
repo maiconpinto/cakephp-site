@@ -25,7 +25,7 @@ class PostsController extends AppController
     public function index()
     {
         $this->paginate = [
-            'contain' => ['Authors']
+            'contain' => ['Authors', 'Categories']
         ];
         $posts = $this->paginate($this->Posts);
 
@@ -42,7 +42,7 @@ class PostsController extends AppController
     public function view($id = null)
     {
         $post = $this->Posts->get($id, [
-            'contain' => ['Authors', 'Comments', 'Tags']
+            'contain' => ['Authors', 'Categories', 'Comments', 'Tags']
         ]);
 
         $this->set('post', $post);
@@ -66,9 +66,10 @@ class PostsController extends AppController
             $this->Flash->error(__('The post could not be saved. Please, try again.'));
         }
         $authors = $this->Posts->Authors->find('list', ['limit' => 200]);
+        $categories = $this->Posts->Categories->find('list', ['limit' => 200]);
         $comments = $this->Posts->Comments->find('list', ['limit' => 200]);
         $tags = $this->Posts->Tags->find('list', ['limit' => 200]);
-        $this->set(compact('post', 'authors', 'comments', 'tags'));
+        $this->set(compact('post', 'authors', 'categories', 'comments', 'tags'));
     }
 
     /**
@@ -81,7 +82,7 @@ class PostsController extends AppController
     public function edit($id = null)
     {
         $post = $this->Posts->get($id, [
-            'contain' => ['Comments', 'Tags']
+            'contain' => ['Authors', 'Categories', 'Comments', 'Tags']
         ]);
         if ($this->request->is(['patch', 'post', 'put'])) {
             $post = $this->Posts->patchEntity($post, $this->request->getData());
@@ -93,9 +94,10 @@ class PostsController extends AppController
             $this->Flash->error(__('The post could not be saved. Please, try again.'));
         }
         $authors = $this->Posts->Authors->find('list', ['limit' => 200]);
+        $categories = $this->Posts->Categories->find('list', ['limit' => 200]);
         $comments = $this->Posts->Comments->find('list', ['limit' => 200]);
         $tags = $this->Posts->Tags->find('list', ['limit' => 200]);
-        $this->set(compact('post', 'authors', 'comments', 'tags'));
+        $this->set(compact('post', 'authors', 'categories', 'comments', 'tags'));
     }
 
     /**
