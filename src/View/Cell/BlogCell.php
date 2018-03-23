@@ -37,4 +37,12 @@ class BlogCell extends Cell
         $posts = $this->Posts->find('all')->contain(['Authors', 'Tags', 'Comments'])->where(['status' => 1]);
         $this->set('posts', $posts->all());
     }
+
+    public function lastPosts($element, $limit = 5) {
+        $this->set('element',$element);
+
+        $this->loadModel('Site.Posts');
+        $posts = $this->Posts->find('all')->where(['status' => 1])->order(['id' => 'DESC'])->limit($limit);
+        $this->set('posts', $posts->all());
+    }
 }
