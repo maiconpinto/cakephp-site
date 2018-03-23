@@ -1,0 +1,1 @@
+<?php echo $this->element($element, ['post_id' => $post_id]); ?>

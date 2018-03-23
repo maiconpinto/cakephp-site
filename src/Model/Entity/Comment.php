@@ -32,6 +32,7 @@ class Comment extends Entity
         'name' => true,
         'email' => true,
         'comment' => true,
-        'status' => true
+        'status' => true,
+        'post_id' => true
     ];
 }

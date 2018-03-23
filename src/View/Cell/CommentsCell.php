@@ -33,4 +33,9 @@ class CommentsCell extends Cell
         $comments = $this->Comments->find('all')->where(['post_id' => $post_id, 'status' => 1]);
         $this->set('comments', $comments->all());
     }
+
+    public function form($element, $post_id) {
+        $this->set('element', $element);
+        $this->set('post_id', $post_id);
+    }
 }
