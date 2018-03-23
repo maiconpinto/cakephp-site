@@ -35,6 +35,7 @@ class Post extends Entity
     protected $_accessible = [
         'created' => true,
         'modified' => true,
+        'category_id' => true,
         'title' => true,
         'post' => true,
         'date' => true,

@@ -19,6 +19,7 @@
     <fieldset>
         <legend><?= __('Add Post') ?></legend>
         <?php
+            echo $this->Form->control('category_id', ['options' => $categories]);
             echo $this->Form->control('title');
             echo $this->Form->control('post');
             echo $this->Form->control('date');

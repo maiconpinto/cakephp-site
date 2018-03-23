@@ -82,6 +82,11 @@ class PostsTable extends Table
         $validator
             ->integer('id')
             ->allowEmpty('id', 'create');
+    
+        $validator
+            ->integer('category_id')
+            ->requirePresence('category_id', 'create')
+            ->notEmpty('category_id');
 
         $validator
             ->scalar('title')
