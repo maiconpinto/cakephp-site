@@ -45,4 +45,12 @@ class BlogCell extends Cell
         $posts = $this->Posts->find('all')->where(['status' => 1])->order(['id' => 'DESC'])->limit($limit);
         $this->set('posts', $posts->all());
     }
+
+    public function lastComments($element, $limit = 5) {
+        $this->set('element',$element);
+
+        $this->loadModel('Site.Comments');
+        $comments = $this->Comments->find('all')->contain(['Posts'])->where(['status' => 1])->order(['id' => 'DESC'])->limit($limit);
+        $this->set('comments', $comments->all());
+    }
 }
