@@ -55,7 +55,7 @@ class PostsTable extends Table
         $this->belongsTo('Categories', [
             'foreignKey' => 'category_id',
             'joinType' => 'INNER',
-            'className' => 'Categories'
+            'className' => 'Site.Categories'
         ]);
 
         $this->hasMany('Comments', [
