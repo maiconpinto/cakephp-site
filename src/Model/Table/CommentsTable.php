@@ -40,10 +40,9 @@ class CommentsTable extends Table
 
         $this->addBehavior('Timestamp');
 
-        $this->belongsToMany('Posts', [
-            'foreignKey' => 'comment_id',
-            'targetForeignKey' => 'post_id',
-            'joinTable' => 'comments_posts',
+        $this->belongsTo('Posts', [
+            'foreignKey' => 'post_id',
+            'joinType' => 'INNER',
             'className' => 'Site.Posts'
         ]);
     }

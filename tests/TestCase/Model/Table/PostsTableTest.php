@@ -27,7 +27,6 @@ class PostsTableTest extends TestCase
         'plugin.site.posts',
         'plugin.site.authors',
         'plugin.site.comments',
-        'plugin.site.comments_posts',
         'plugin.site.tags',
         'plugin.site.posts_tags'
     ];

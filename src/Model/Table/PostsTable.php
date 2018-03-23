@@ -51,12 +51,12 @@ class PostsTable extends Table
             'joinType' => 'INNER',
             'className' => 'Site.Authors'
         ]);
-        $this->belongsToMany('Comments', [
+
+        $this->hasMany('Comments', [
             'foreignKey' => 'post_id',
-            'targetForeignKey' => 'comment_id',
-            'joinTable' => 'comments_posts',
             'className' => 'Site.Comments'
         ]);
+        
         $this->belongsToMany('Tags', [
             'foreignKey' => 'post_id',
             'targetForeignKey' => 'tag_id',
