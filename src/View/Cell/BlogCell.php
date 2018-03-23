@@ -50,7 +50,7 @@ class BlogCell extends Cell
         $this->set('element',$element);
 
         $this->loadModel('Site.Comments');
-        $comments = $this->Comments->find('all')->contain(['Posts'])->where(['status' => 1])->order(['id' => 'DESC'])->limit($limit);
+        $comments = $this->Comments->find('all')->contain(['Posts'])->where(['Comments.status' => 1, 'Posts.status' => 1])->order(['Comments.id' => 'DESC'])->limit($limit);
         $this->set('comments', $comments->all());
     }
 }
