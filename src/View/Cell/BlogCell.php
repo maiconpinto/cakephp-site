@@ -53,4 +53,12 @@ class BlogCell extends Cell
         $comments = $this->Comments->find('all')->contain(['Posts'])->where(['Comments.status' => 1, 'Posts.status' => 1])->order(['Comments.id' => 'DESC'])->limit($limit);
         $this->set('comments', $comments->all());
     }
+
+    public function categories($element) {
+        $this->set('element', $element);
+
+        $this->loadModel('Site.Categories');
+        $categories = $this->Categories->find('list')->matching('Posts');
+        $this->set('categories', $categories->all());
+    }
 }
