@@ -37,6 +37,10 @@ class PartnersTable extends Table
         $this->setPrimaryKey('id');
 
         $this->addBehavior('Timestamp');
+
+        $this->addBehavior('Josegonzalez/Upload.Upload', [
+            'image' => []
+        ]);
     }
 
     /**
@@ -62,9 +66,6 @@ class PartnersTable extends Table
             ->allowEmpty('description');
 
         $validator
-            ->scalar('image')
-            ->maxLength('image', 255)
-            ->requirePresence('image', 'create')
             ->notEmpty('image');
 
         $validator
