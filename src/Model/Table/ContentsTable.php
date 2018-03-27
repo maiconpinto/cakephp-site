@@ -38,7 +38,7 @@ class ContentsTable extends Table
 
         $this->addBehavior('Timestamp');
 
-        $this->addBehvaior('Josegonzalez/Upload.Upload', [
+        $this->addBehavior('Josegonzalez/Upload.Upload', [
             'image' => []
         ]);
     }
