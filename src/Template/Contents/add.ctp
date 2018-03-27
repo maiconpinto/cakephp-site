@@ -11,7 +11,7 @@
     </ul>
 </nav>
 <div class="contents form large-9 medium-8 columns content">
-    <?= $this->Form->create($content) ?>
+    <?= $this->Form->create($content, ['type' => 'file']) ?>
     <fieldset>
         <legend><?= __('Add Content') ?></legend>
         <?php
@@ -21,7 +21,7 @@
             echo $this->Form->control('icon');
             echo $this->Form->control('class');
             echo $this->Form->control('url');
-            echo $this->Form->control('image');
+            echo $this->Form->control('image', ['type' => 'file']);
             echo $this->Form->control('status');
         ?>
     </fieldset>

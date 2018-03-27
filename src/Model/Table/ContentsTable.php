@@ -37,6 +37,10 @@ class ContentsTable extends Table
         $this->setPrimaryKey('id');
 
         $this->addBehavior('Timestamp');
+
+        $this->addBehvaior('Josegonzalez/Upload.Upload', [
+            'image' => []
+        ]);
     }
 
     /**
@@ -83,8 +87,6 @@ class ContentsTable extends Table
             ->allowEmpty('url');
 
         $validator
-            ->scalar('image')
-            ->maxLength('image', 255)
             ->allowEmpty('image');
 
         $validator
